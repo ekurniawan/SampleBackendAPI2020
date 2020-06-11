@@ -11,20 +11,26 @@ namespace SampleBackendApp.Controllers
     {
         //sample api
         // GET api/values
-        private List<string> lstNama; 
-        public IEnumerable<string> Get()
+        private List<string> lstNama;
+        public ValuesController()
         {
             lstNama = new List<string>
             {
                 "erick", "bambang","joko","amir"
             };
+        }
+
+        public IEnumerable<string> Get()
+        {
+            
             return lstNama;
         }
 
         // GET api/values/5
         public string Get(string nama)
         {
-            string result = lstNama.Where(n => n == nama).SingleOrDefault();
+            //return nama;
+            var result = lstNama.Where(n => n == nama).SingleOrDefault();
             if (result != null)
                 return $"Ditemukan: {result}";
             else
