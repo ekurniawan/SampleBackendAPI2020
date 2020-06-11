@@ -21,7 +21,7 @@ namespace SampleBackendApp.DAL
             List<Employee> lstEmployee = new List<Employee>();
             using(SqlConnection conn = new SqlConnection(GetConnStr()))
             {
-                string strSql = @"select * from Employee order by EmpName asc";
+                string strSql = @"select * from Employees order by EmpName asc";
                 SqlCommand cmd = new SqlCommand(strSql,conn);
                 conn.Open();
                 SqlDataReader dr = cmd.ExecuteReader();
