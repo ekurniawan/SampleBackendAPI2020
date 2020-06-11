@@ -55,7 +55,7 @@ namespace SampleBackendApp.DAL
                 Employees(EmpName,Designation,Department,Qualification,BirthDate) 
                 values(@EmpName,@Designation,@Department,@Qualification,@BirthDate)";
                 SqlCommand cmd = new SqlCommand(strSql, conn);
-                cmd.Parameters.AddWithValue("@EmpName",emp.EmpId);
+                cmd.Parameters.AddWithValue("@EmpName",emp.EmpName);
                 cmd.Parameters.AddWithValue("@Designation", emp.Designation);
                 cmd.Parameters.AddWithValue("@Department", emp.Department);
                 cmd.Parameters.AddWithValue("@Qualification", emp.Qualification);

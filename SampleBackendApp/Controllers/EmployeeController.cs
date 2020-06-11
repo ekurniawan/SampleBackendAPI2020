@@ -30,8 +30,17 @@ namespace SampleBackendApp.Controllers
         }
 
         // POST: api/Employee
-        public void Post([FromBody]string value)
+        public IHttpActionResult Post(Employee emp)
         {
+            try
+            {
+                empDAL.CreateEmployee(emp);
+                return Ok($"Data employee {emp.EmpName} berhasil ditambahkan");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Error: {ex.Message}");
+            }
         }
 
         // PUT: api/Employee/5
