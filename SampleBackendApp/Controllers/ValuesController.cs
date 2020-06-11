@@ -9,6 +9,7 @@ namespace SampleBackendApp.Controllers
 {
     public class ValuesController : ApiController
     {
+        //sample api
         // GET api/values
         private List<string> lstNama; 
         public IEnumerable<string> Get()
