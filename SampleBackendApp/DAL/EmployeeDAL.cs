@@ -78,5 +78,40 @@ namespace SampleBackendApp.DAL
                 }
             }
         }
+
+        public void UpdateEmployee(Employee emp)
+        {
+            using (SqlConnection conn = new SqlConnection(GetConnStr()))
+            {
+                string strSql = @"update Employees set EmpName=@EmpName,Designation=@Designation,
+                Department=@Department,Qualification=@Qualification,BirthDate=@Birthdate 
+                where EmpId=@EmpId";
+
+                SqlCommand cmd = new SqlCommand(strSql, conn);
+                cmd.Parameters.AddWithValue("@EmpName", emp.EmpName);
+                cmd.Parameters.AddWithValue("@Designation", emp.Designation);
+                cmd.Parameters.AddWithValue("@Department", emp.Department);
+                cmd.Parameters.AddWithValue("@Qualification", emp.Qualification);
+                cmd.Parameters.AddWithValue("@BirthDate", emp.BirthDate);
+                cmd.Parameters.AddWithValue("@EmpId", emp.EmpId);
+
+                try
+                {
+                    conn.Open();
+                    var result = cmd.ExecuteNonQuery();
+                    if (result != 1)
+                        throw new Exception("Data gagal diupdate");
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception($"Kesalahan: {ex.Message}");
+                }
+                finally
+                {
+                    cmd.Dispose();
+                    conn.Close();
+                }
+            }
+        }
     }
 }
