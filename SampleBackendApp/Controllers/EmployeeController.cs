@@ -58,8 +58,17 @@ namespace SampleBackendApp.Controllers
         }
 
         // DELETE: api/Employee/5
-        public void Delete(int id)
+        public IHttpActionResult Delete(int id)
         {
+            try
+            {
+                empDAL.DeleteEmployee(id);
+                return Ok($"Delete data employee berhasil");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }
